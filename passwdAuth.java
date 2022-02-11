@@ -25,11 +25,20 @@ public class passwdAuth {
                 System.out.println("Access granted!");
                 System.out.println("Password is :: "+password);
 
-                PrintWriter out = new PrintWriter(new
-                        FileOutputStream(f, true));
+                PrintWriter out = new PrintWriter(new FileOutputStream(f, true));
+                FileInputStream f1 = new FileInputStream("src/Week4/Session17/" + args[0]);
+
+
                 out.println();
                 out.print("Updated...");
                 out.println();
+
+                DataInputStream din = new DataInputStream(f1);
+                int i = 0;
+                while ((i = din.read()) != -1) {
+                    System.out.print((char) i);
+                }
+
                 out.flush();
                 out.close();
             }//end if
@@ -41,18 +50,7 @@ public class passwdAuth {
             //e.printStackTrace();
         }
 
-        try {
-            FileInputStream f1 = new FileInputStream("src/Week4/Session17/" + args[0]);
-            DataInputStream din = new DataInputStream(f1);
 
-
-            int i = 0;
-            while ((i = din.read()) != -1) {
-                System.out.print((char) i);
-            }
-        } catch (IOException e) {
-            System.out.println("an error has occured.");
-        }
     }//end main
 }//end class
 
